@@ -1,0 +1,59 @@
+name: celebration
+description: A new Flutter application.
+authors: ['Gehad Abdelaziz Helmy']
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg:
+  easy_localization:
+  pin_code_text_field: ^1.5.1
+  carousel_pro: ^1.0.0
+  flutter_swiper: ^1.1.6
+  cached_network_image: ^2.3.2+1
+  dash_chat: ^1.1.15
+  cloud_firestore: ^0.14.1+3
+  firebase_storage:
+  image_picker:
+  permission_handler: ^5.0.0+hotfix.5
+  popup_menu:
+  flutter_share: ^1.0.2+1
+  documents_picker:
+  screenshot:
+  url_launcher:
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.7.3"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/المعتمد.png"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/locales/
+    - assets/images/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+    - family: AppIcon
+      fonts:
+        - asset: assets/fonts/fontello.ttf
+

@@ -1,0 +1,4 @@
+#Mon Oct 19 11:54:56 EET 2020
+base.0=E\:\\project in flutter\\celebration\\build\\app\\intermediates\\transforms\\r8\\release\\0\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
