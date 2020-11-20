@@ -2,10 +2,10 @@ import 'package:celebration/Component/Colors.dart';
 import 'package:celebration/Component/LocalKeys.dart';
 import 'package:celebration/Component/Resources.dart';
 import 'package:celebration/Component/Widget/CustomAlertDialog.dart';
-import 'package:celebration/Pages/Auth/AuthToRooms/LoginToRooms.dart';
+import 'package:celebration/Pages/AuthToRooms/LoginToRooms.dart';
 import 'package:celebration/Pages/Auth/ForgetPassword.dart';
 import 'package:celebration/Pages/Auth/NewAccount.dart';
-import 'package:celebration/Pages/Auth/Pages/HomePage.dart';
+import 'package:celebration/Pages/HomePage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Stack(
         children: [

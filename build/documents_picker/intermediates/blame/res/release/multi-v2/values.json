@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\values\\values.xml",
@@ -156,7 +156,7 @@
             ]
         },
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\values\\values.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\values\\values.xml",

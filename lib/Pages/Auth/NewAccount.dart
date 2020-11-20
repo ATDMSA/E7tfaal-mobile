@@ -5,14 +5,18 @@ import 'package:celebration/Component/Widget/CustomAlertDialog.dart';
 import 'package:celebration/Component/Widget/CustomAppBar.dart';
 import 'package:celebration/Component/Widget/EduButton.dart';
 import 'package:celebration/Pages/Auth/Login_page.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import 'ForgetPasswordConfirmCode.dart';
-import 'MessWelcome.dart';
-
+import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'package:celebration/Component/Widget/ProfilePageTextFileds.dart';
+import 'package:celebration/Component/Widget/KeyBoardType.dart';
+import 'package:provider/provider.dart';
+import 'package:celebration/AppState/SelectCountryProvider.dart';
+import 'package:celebration/APIS/WebServices.dart';
 class NewAccount extends StatefulWidget {
+  final String comingFrom;
+  NewAccount({this.comingFrom});
   @override
   _NewAccountState createState() => _NewAccountState();
 }
@@ -27,11 +31,12 @@ class _NewAccountState extends State<NewAccount> {
   TextEditingController _newPassword = TextEditingController();
 
   String selectedSix = 'ذكر';
+  String selectedSixAPI = "male";
   String selectedCity = 'مصر';
 
   bool _validateDOB = false;
   TextEditingController dobContainer = new TextEditingController();
-
+  String dobApi;
   bool isChecked = false;
   var resultHolder = 'Checkbox is UN-CHECKED';
 
@@ -111,17 +116,11 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child: ProfilePageTextFiled(
                           controller: _firsName,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.FIRST_NAME,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.FIRST_NAME,
+                          keyBoardType: KeyBoard_Type.text,
+                        )
                       ),
                     ),
                     SizedBox(
@@ -135,17 +134,12 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child: ProfilePageTextFiled(
                           controller: _familyName,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.FAMILY_NAME,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.FAMILY_NAME,
+                          keyBoardType: KeyBoard_Type.text,
+                        )
+
                       ),
                     ),
                     SizedBox(
@@ -159,17 +153,11 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child:  ProfilePageTextFiled(
                           controller: _phone,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.PHONE_NO,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.PHONE_NO,
+                          keyBoardType: KeyBoard_Type.number,
+                        )
                       ),
                     ),
                     SizedBox(
@@ -183,17 +171,13 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child:
+                        ProfilePageTextFiled(
                           controller: _email,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.EMAIL,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.EMAIL,
+                          keyBoardType: KeyBoard_Type.text,
+                        )
+
                       ),
                     ),
                     SizedBox(
@@ -213,58 +197,20 @@ class _NewAccountState extends State<NewAccount> {
                                   color: Colors.white,
                                   border: Border.all(color: Colors.black),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: TextField(
-                                enabled: false,
+                              child: ProfilePageTextFiled(
                                 controller: dobContainer,
-                                decoration: InputDecoration(
-                                  hintText: LocalKeys.BIRTH_DATE,
-                                  hintStyle: Styles.loginTextStyle
-                                      .copyWith(color: Colors.black),
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10),
-                                ),
-                              ),
+                                hint: LocalKeys.BIRTH_DATE,
+                                keyBoardType: KeyBoard_Type.text,
+                                keyboardEnabled: false,
+                              )
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        _validateDOB == true
-                            ? Text(
-                          "برجاء ادخال تاريخ الميلاد",
-                          style: TextStyle(color: AppColors.PurpleColor),
-                        )
-                            : Container()
                       ],
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                   /* Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.85,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
-                          controller: _six,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.SIX,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ),*/
-
-
                     Container(
                       width: MediaQuery.of(context).size.width * 0.85,
                       decoration: BoxDecoration(
@@ -286,7 +232,14 @@ class _NewAccountState extends State<NewAccount> {
                           style: Styles.loginTextStyle.copyWith(color: Colors.black),
                           onChanged: (String newValue) {
                             setState(() {
-                              selectedSix = newValue;
+                              print("newValue : " + newValue);
+                              if (newValue == "انثي") {
+                                selectedSixAPI = "female";
+                                selectedSix = newValue;
+                              } else {
+                                selectedSixAPI = "male";
+                                selectedSix = newValue;
+                              }
                             });
                           },
                           underline: Container(),
@@ -305,42 +258,69 @@ class _NewAccountState extends State<NewAccount> {
                       height: 10,
                     ),
 
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding:  EdgeInsets.only(right: 10),
-                        child: DropdownButton<String>(
-                          hint:Text( LocalKeys.CITY),
-                          value: selectedCity,
-                          icon: Padding(
-                            padding: const EdgeInsets.only(left: 13),
-                            child: Icon(Icons.arrow_drop_down, color: Colors.black,),
-                          ),
-                          iconSize: 24,
-                          elevation: 16,
-                          isExpanded: true,
-                          style: Styles.loginTextStyle.copyWith(color: Colors.black),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              selectedCity = newValue;
-                            });
-                          },
-                          underline: Container(),
-                          items: <String>['مصر', 'السعودية']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
 
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () => Provider.of<SelectCountryProvider>(context, listen: false).selectCountryFun(context),
+                          child:  Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Container(
+                                width: MediaQuery.of(context).size.width * 0.85,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: ProfilePageTextFiled(
+                                  controller: Provider.of<SelectCountryProvider>(context, listen: true).countryController,
+                                  hint: LocalKeys.CITY,
+                                  keyBoardType: KeyBoard_Type.text,
+                                  keyboardEnabled: false,
+                                )
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
+
+//                    Container(
+//                      width: MediaQuery.of(context).size.width * 0.85,
+//                      decoration: BoxDecoration(
+//                          color: Colors.white,
+//                          border: Border.all(color: Colors.black),
+//                          borderRadius: BorderRadius.circular(10)),
+//                      child: Padding(
+//                        padding:  EdgeInsets.only(right: 10),
+//                        child: DropdownButton<String>(
+//                          hint:Text( LocalKeys.CITY),
+//                          value: selectedCity,
+//                          icon: Padding(
+//                            padding: const EdgeInsets.only(left: 13),
+//                            child: Icon(Icons.arrow_drop_down, color: Colors.black,),
+//                          ),
+//                          iconSize: 24,
+//                          elevation: 16,
+//                          isExpanded: true,
+//                          style: Styles.loginTextStyle.copyWith(color: Colors.black),
+//                          onChanged: (String newValue) {
+//                            setState(() {
+//                              selectedCity = newValue;
+//                            });
+//                          },
+//                          underline: Container(),
+//                          items: <String>['مصر', 'السعودية']
+//                              .map<DropdownMenuItem<String>>((String value) {
+//                            return DropdownMenuItem<String>(
+//
+//                              value: value,
+//                              child: Text(value),
+//                            );
+//                          }).toList(),
+//                        ),
+//                      ),
+//                    ),
 
 
                     SizedBox(
@@ -354,17 +334,12 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child: ProfilePageTextFiled(
                           controller: _password,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.PASSWORD,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.PASSWORD,
+                          keyBoardType: KeyBoard_Type.text,
+                        )
+
                       ),
                     ),
                     SizedBox(
@@ -378,17 +353,11 @@ class _NewAccountState extends State<NewAccount> {
                             color: Colors.white,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10)),
-                        child: TextField(
+                        child: ProfilePageTextFiled(
                           controller: _newPassword,
-                          decoration: InputDecoration(
-                            hintText: LocalKeys.PASSWORD_DONE,
-                            hintStyle: Styles.loginTextStyle
-                                .copyWith(color: Colors.black),
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
-                        ),
+                          hint: LocalKeys.PASSWORD_DONE,
+                          keyBoardType: KeyBoard_Type.text,
+                        )
                       ),
                     ),
 
@@ -449,8 +418,8 @@ class _NewAccountState extends State<NewAccount> {
   }
 
   void _newAccount() {
-    if (_firsName.text.isEmpty &&_familyName.text.isEmpty &&_phone.text.isEmpty &&_email.text.isEmpty &&
-         _password.text.isEmpty && _newPassword.text.isEmpty) {
+
+    if (_firsName.text.isEmpty &&_familyName.text.isEmpty &&_phone.text.isEmpty &&_email.text.isEmpty && _password.text.isEmpty && _newPassword.text.isEmpty && dobContainer.text.isEmpty) {
       showDialog(
         context: context,
         builder: (_) => CustomAlertDialog(
@@ -458,6 +427,7 @@ class _NewAccountState extends State<NewAccount> {
         ),
       );
     } else if (_firsName.text.isEmpty) {
+
       showDialog(
         context: context,
         builder: (_) => CustomAlertDialog(
@@ -485,6 +455,13 @@ class _NewAccountState extends State<NewAccount> {
           mess: LocalKeys.ENTER_EMAIL,
         ),
       );
+    } else if (dobContainer.text.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (_) => CustomAlertDialog(
+          mess: LocalKeys.ENTER_DOB,
+        ),
+      );
     } else if (_password.text.isEmpty) {
       showDialog(
         context: context,
@@ -500,24 +477,58 @@ class _NewAccountState extends State<NewAccount> {
         ),
       );
     }  else {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => MessWelcome()));
+      print("start hit end point");
+      registFun();
+//      Navigator.of(context)
+//          .pushReplacement(MaterialPageRoute(builder: (context) => MessWelcome()));
     }
   }
 
+   registFun() {
+
+     WebServices.registerApi(
+       firstName: _firsName.text,
+       lastName: _familyName.text,
+       phone: _phone.text,
+       email: _email.text,
+       birthDay: dobApi,
+       cityId: Provider.of<SelectCountryProvider>(context, listen: false).selectedCountryCode,
+       six: selectedSixAPI,
+       password: _password.text,
+       passwordConfirm: _newPassword.text,
+       device: "android",
+       token: "111",
+       socialId: "123456",
+       provider: "facebook"
+     ).then((response) {
+       print("response : " + json.decode(response.body).toString());
+       if (json.decode(response.body)['value'] == true) {
+
+       } else {
+         print("errrrrrrrrrrrrrorrrrrrorrrorrorrorrorrorrorrrrorrorrorrorrorrorrorrorrorrrrorrorro");
+         print("from error : " + json.decode(response.body)['msg']);
+         showDialog(
+           context: context,
+           builder: (_) => C\ustomAlertDialog(
+             mess: json.decode(response.body)['msg'],
+           ),
+         );
+       }
+
+     });
+  }
   Future<void> selectDate(BuildContext context, DateTime initialDateTime,
       {DateTime lastDate}) async {
-    String format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    String format = "dd-MM-yyyy";
 //    print("Date : " +  DateFormat(format).format(DateTime.now()).toString());
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: initialDateTime,
-        firstDate: DateTime(1970),
-        lastDate: DateTime(2101));
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now());
     setState(() {
-     // dateAPI = DateFormat(format).format(picked);
+      dobApi = DateFormat(format).format(picked).toString();
       dobContainer.text = picked.toString().substring(0, 10);
-    //  print("dateAPI : " +  dateAPI.toString());
 //      ZonedDateTime
     });
 }

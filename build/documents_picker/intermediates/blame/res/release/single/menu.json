@@ -1,18 +1,18 @@
 [
     {
-        "merged": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\media_detail_menu.xml",
-        "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\menu\\media_detail_menu.xml"
-    },
-    {
-        "merged": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\select_menu.xml",
+        "merged": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\select_menu.xml",
         "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\menu\\select_menu.xml"
     },
     {
-        "merged": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\doc_picker_menu.xml",
+        "merged": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\media_detail_menu.xml",
+        "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\menu\\media_detail_menu.xml"
+    },
+    {
+        "merged": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\doc_picker_menu.xml",
         "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\menu\\doc_picker_menu.xml"
     },
     {
-        "merged": "E:\\project in flutter\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\picker_menu.xml",
+        "merged": "E:\\ATDM\\celebration\\build\\documents_picker\\intermediates\\res\\merged\\release\\menu\\picker_menu.xml",
         "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\menu\\picker_menu.xml"
     }
 ]

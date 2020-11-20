@@ -1,10 +1,9 @@
 import 'package:celebration/Component/Colors.dart';
 import 'package:celebration/Component/LocalKeys.dart';
 import 'package:celebration/Component/Resources.dart';
-import 'package:celebration/Component/Widget/CustomAlertDialog.dart';
 import 'package:celebration/Component/Widget/CustomAppBar.dart';
 import 'package:celebration/Component/Widget/EduButton.dart';
-import 'package:celebration/Pages/Auth/Pages/HomePage.dart';
+import 'package:celebration/Pages//HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

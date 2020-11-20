@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\firebase_storage\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-sr\\values-sr.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\firebase_storage\\intermediates\\res\\merged\\release\\values-sr\\values-sr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\5ac9ad6f13ea0190a3570ea7a43d9f59\\play-services-base-17.0.0\\res\\values-sr\\values.xml",
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\firebase_storage\\intermediates\\res\\merged\\release\\values-sr\\values-sr.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\firebase_storage\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-sr\\values-sr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\5ac9ad6f13ea0190a3570ea7a43d9f59\\play-services-base-17.0.0\\res\\values-sr\\values.xml",

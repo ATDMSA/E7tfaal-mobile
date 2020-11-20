@@ -19,7 +19,8 @@ class LocalKeys {
   static const String ENTER_PASSWORD = 'أدخل كلمة المرور الجديدة';
   static const String ENTER_NEW_PASSWORD = 'كلمة المرور الجديدة';
   static const String ENTER_Return_PASSWORD = 'إعادة كلمة المرور الجديدة';
-  static const String ENTER_EMAIL = " ادخل البريد الالكتروني";
+  static const String ENTER_EMAIL = "ادخل البريد الالكتروني";
+  static const String ENTER_DOB = "ادخل تاريخ الميلاد";
   static const String ENTER_CODE_OF_EMAIL = 'أدخل الرمز المرسل على بريدك الإلكتروني';
   static const String CONFIRMATION_CODE = 'تم إرسال رمز التأكيد على البريد الإلكتروني الخاص بك';
 

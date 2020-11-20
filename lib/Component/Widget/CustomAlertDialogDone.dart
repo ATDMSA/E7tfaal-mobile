@@ -1,4 +1,4 @@
-import 'package:celebration/Pages/Auth/Drawers/CanselReservation.dart';
+import 'package:celebration/Pages/Drawers/CanselReservation.dart';
 import 'package:flutter/material.dart';
 import 'package:celebration/Component/Colors.dart';
 class CustomAlertDialogDone extends StatefulWidget {

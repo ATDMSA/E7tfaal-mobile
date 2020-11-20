@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-az\\values-az.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-az\\values-az.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\5ac9ad6f13ea0190a3570ea7a43d9f59\\play-services-base-17.0.0\\res\\values-az\\values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\project in flutter\\celebration\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+            "outputFile": "E:\\ATDM\\celebration\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
             "map": [
                 {
                     "source": "C:\\Users\\dill\\.gradle\\caches\\transforms-2\\files-2.1\\88f69513faf455e4813ae48009c9fdd8\\filepicker-2.2.1\\res\\values-zh\\values-zh.xml",

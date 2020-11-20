@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 
 import '../Colors.dart';
+import 'CustomAlertFilter.dart';
+
 class CustomAppBar extends StatelessWidget {
+  final String title, text;
+  final TextStyle style;
+  final IconData filter, icon;
+  VoidCallback onPress, onPressFilter;
+  appBarAction appAction;
 
-  final String title , text ;
-  final TextStyle style ;
-  final IconData filter , icon;
-  VoidCallback  onPress, onPressFilter;
-
-  CustomAppBar({this.title  , this.style,this.icon,this.filter,this.onPress ,this.onPressFilter,this.text});
-
+  CustomAppBar(
+      {this.title,
+      this.style,
+      this.icon,
+      this.filter,
+      this.onPress,
+      this.onPressFilter,
+      this.text,
+      this.appAction = appBarAction.back,});
+  String devicesType = 'الكل';
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -27,21 +37,84 @@ class CustomAppBar extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: 140,
             color: AppColors.PurpleDarkColor,
-            child:
-                Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
                     onTap: onPress,
-                    child: Icon (icon, color: AppColors.whiteColor, size: 30,)),
-                Text(title ?? ''  , style: style ?? Styles.appbarTextStyle, textScaleFactor: 1,),
+                    child: Icon(
+                      icon,
+                      color: AppColors.whiteColor,
+                      size: 30,
+                    )),
+                Text(
+                  title ?? '',
+                  style: style ?? Styles.appbarTextStyle,
+                  textScaleFactor: 1,
+                ),
                 InkWell(
-                    onTap: onPressFilter ,
+                    onTap: onPressFilter,
                     child: Row(
                       children: [
-                        Text(text ?? ''  , style: style ?? Styles.appbarTextStyle, textScaleFactor: 1,),
-                        SizedBox(width: 5,),
-                        Icon ( filter == null ? IconData(0xE800,fontFamily: 'AppIcon',): filter, color: AppColors.YellowColor, size: 20,),
+                        appAction == appBarAction.filter
+                            ? Theme(
+                          data: Theme.of(context).copyWith(
+                            canvasColor: AppColors.PurpleColor,
+                           ),
+                              child: Container(
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton(
+                                      icon: Icon(
+                                        IconData(
+                                          0xF0B0,
+                                          fontFamily: 'AppIcon',
+                                        ),
+                                        color: AppColors.YellowColor,
+                                      ),
+                                      style: TextStyle(color: AppColors.whiteColor),
+                                      value: devicesType,
+                                      onChanged: (value) {},
+                                      items: [
+                                        DropdownMenuItem(
+                                          value: 'الكل',
+                                          child: Row(
+                                            children: <Widget>[Text('الكل')],
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'الرياض',
+                                          child: Row(
+                                            children: <Widget>[Text('الرياض')],
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'جدة',
+                                          child: Row(
+                                            children: <Widget>[Text('جدة')],
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'الدمام',
+                                          child: Row(
+                                            children: <Widget>[Text('الدمام')],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                ),
+                              ),
+                            )
+                                 :   appAction == appBarAction.back ? InkWell(
+                          onTap: ()=>Navigator.pop(context),
+                              child: Icon(
+                                  IconData(
+                                    0xE800,
+                                    fontFamily: 'AppIcon',
+                                  ),
+                                  color: AppColors.YellowColor,
+                                  size: 20,
+                                ),
+                            ): Container(),
                       ],
                     )),
               ],
@@ -72,6 +145,7 @@ class CustomClipPath extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
+
 class CustomClipPathTop extends CustomClipper<Path> {
   @override
   getClip(Size size) {
@@ -81,7 +155,7 @@ class CustomClipPathTop extends CustomClipper<Path> {
     var firstControlPoint = new Offset(size.width / 4, size.height / 3);
     var firstEndPoint = new Offset(size.width / 2, size.height / 3 - 10);
     var secondControlPoint =
-    new Offset(size.width - (size.width / 4), size.height / 4 - 65);
+        new Offset(size.width - (size.width / 4), size.height / 4 - 65);
     var secondEndPoint = new Offset(size.width, size.height / 3 - 40);
 
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
@@ -94,6 +168,7 @@ class CustomClipPathTop extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

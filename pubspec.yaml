@@ -28,6 +28,16 @@ dependencies:
   documents_picker:
   screenshot:
   url_launcher:
+  google_maps_flutter:
+  location:
+  shared_preferences:
+  http:
+  fluttertoast:
+  provider:
+  flutter_rating_bar:
+  connectivity: ^0.4.8+2
+  photo_view:
+
 
 
 dev_dependencies:
